@@ -1,0 +1,103 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f0f8f0; /* Color de fondo suave */
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('images/bannerindex.png'); /* Añadir la imagen de fondo */
+    background-size: cover; /* Cubrir el área completa */
+    background-position: center; /* Centrar la imagen */
+    padding: 100px 20px;
+    text-align: center;
+    color: white; /* Color del texto */
+}
+
+.title {
+    font-family: 'Dancing Script', cursive; /* Fuente para el título */
+    font-size: 4rem; /* Ajusta el tamaño según necesites */
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-primary, .cta-secondary {
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.cta-primary {
+    background-color: #66bb6a; /* Verde claro */
+    color: white;
+}
+
+.cta-secondary {
+    background-color: #388e3c; /* Verde más oscuro */
+    color: white;
+}
+
+.cta-primary:hover, .cta-secondary:hover {
+    background-color: #45a049; /* Verde más intenso */
+    color: white;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 20px;
+    background-color: #fff;
+}
+
+.feature {
+    text-align: center;
+    width: 30%;
+}
+
+.feature img {
+    width: 300px; /* Tamaño fijo para todas las imágenes */
+    height: 250px; /* Tamaño fijo para todas las imágenes */
+    border-radius: 10px; /* Bordes ligeramente redondeados */
+    border: 5px solid #4caf50; /* Borde verde */
+    margin-bottom: 20px;
+}
+
+.feature h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #4caf50; /* Verde intenso */
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Footer */
+.footer {
+    background-color: #2e7d32; /* Verde oscuro */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
