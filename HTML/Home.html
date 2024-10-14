@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetConnect - Adopta una Mascota</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet"> <!-- Fuente Caveat -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #d0f0c0; /* Fondo verde claro */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estilo del navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #006400; /* Verde oscuro */
+            padding: 10px 20px;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Alineamos los ítems del menú a la derecha */
+        .navbar-right {
+            display: flex;
+            margin-left: auto; /* Empuja los ítems del menú hacia la derecha */
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .navbar ul li a:hover {
+            color: #b5e7a0; /* Verde más claro para hover */
+        }
+
+        /* Estilo del logo */
+        .logo {
+            height: 50px;
+            margin-right: 20px; /* Margen derecho para separar del menú */
+        }
+
+        /* Fondo principal */
+        .hero {
+            background-color: #9acd32; /* Fondo verde más oscuro */
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+            font-family: 'Caveat', cursive; /* Fuente Caveat para el texto de invitación */
+            flex-grow: 1; /* Asegura que el contenido crezca y empuje el footer hacia abajo */
+        }
+
+        .hero img {
+            width: 500px; /* Imagen rectangular */
+            height: auto;
+            border-radius: 20px; /* Bordes redondeados pero manteniendo el formato rectangular */
+            border: 5px solid #006400; /* Contorno verde oscuro */
+            margin: 20px 0;
+        }
+
+        .btn-adopta {
+            background-color: #006400;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px; /* Espacio entre el botón y la imagen */
+            display: inline-block;
+        }
+
+        /* Centramos el botón */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-adopta:hover {
+            background-color: #b5e7a0; /* Efecto hover */
+        }
+
+        /* Pie de página */
+        .footer {
+            background-color: #006400;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Aseguramos que el footer se posicione al final */
+        html {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        .footer {
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="../images/minimalistlogo.png" alt="PetConnect Logo" class="logo"> <!-- Aquí pondrás tu logo -->
+        </div>
+        <div class="navbar-right">
+            <ul>
+                <li><a href="#">Red Social</a></li>
+                <li><a href="#">Adoptar</a></li>
+                <li><a href="#">Reportes</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Donar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Fondo verde con imagen y botón -->
+    <section class="hero">
+        <h1>Adopta una Mascota y Transforma una Vida</h1>
+        <p>Explora una gran variedad de adorables mascotas esperando un hogar.</p>
+        <img src="../images/homeadopt.png" alt="Imagen de mascotas en adopción">
+        <!-- Contenedor centrado del botón -->
+        <div class="btn-container">
+            <a href="#" class="btn-adopta">Explorar Mascotas en Adopción</a>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p>&copy; 2024 PetConnect. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

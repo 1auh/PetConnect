@@ -14,7 +14,7 @@ body {
     background-position: center; /* Centrar la imagen */
     padding: 100px 20px;
     text-align: center;
-    color: white; /* Color del texto */
+    color: rgb(13, 192, 0); /* Color del texto */
 }
 
 .title {
@@ -76,7 +76,7 @@ body {
 }
 
 .feature img {
-    width: 300px; /* Tamaño fijo para todas las imágenes */
+    width: 400px; /* Tamaño fijo para todas las imágenes */
     height: 250px; /* Tamaño fijo para todas las imágenes */
     border-radius: 10px; /* Bordes ligeramente redondeados */
     border: 5px solid #4caf50; /* Borde verde */
