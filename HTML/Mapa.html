@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Adopción</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cinzel', serif; /* Cambiar la fuente de todo el cuerpo */
+            background-color: #f0f0f0; /* Color de fondo general */
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar {
+            background-color: #004d00; /* Verde intenso */
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #navbar a {
+            color: white; /* Color de los enlaces */
+            margin: 0 15px;
+            text-decoration: none; /* Sin subrayado */
+        }
+
+        #findPets {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #findPetsButton {
+            background-color: #006400; /* Verde intenso */
+            color: white; /* Color del texto */
+            border: none; /* Sin borde */
+            padding: 10px 20px; /* Espaciado */
+            font-size: 18px; /* Ajusta el tamaño según sea necesario */
+            cursor: pointer; /* Cambiar el cursor al pasar por encima */
+            font-family: 'Cinzel', serif; /* Cambiar la fuente del botón */
+        }
+
+        #findPetsButton:hover {
+            background-color: #005700; /* Color al pasar el ratón por encima */
+        }
+
+        #map {
+            height: 500px; /* Ajusta la altura del mapa */
+            width: 80%; /* Ajusta el ancho del mapa */
+            margin: 20px auto; /* Centramos el mapa */
+            border: 2px solid #004d00; /* Borde verde */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para el mapa */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar">
+        <a href="#">Item 1</a>
+        <a href="#">Item 2</a>
+        <a href="#">Item 3</a>
+    </div>
+
+    <div id="findPets">
+        <h2>Encontrar Mascotas</h2>
+        <button id="findPetsButton" onclick="getLocation()">Encontrar Mascotas</button>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="status" style="text-align: center; margin: 20px;"></div>
+
+    <script src="../JavaScript/ubication.js"></script> <!-- Archivo separado de JavaScript -->
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsDllpsMPfH3LTnGY332zGUTYyJJSVQT4&callback=initMap&libraries=places">
+    </script>
+    
+</body>
+</html>
