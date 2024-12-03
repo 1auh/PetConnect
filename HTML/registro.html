@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Style/style.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registro en PetConnect</h2>
+        <form id="register-form">
+            <label for="username">Nombre de Usuario:</label>
+            <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+            
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="Crea una contraseña" required 
+                   pattern="^(?=.*[a-zA-Z])(?=.*\d).{8,}$" 
+                   title="La contraseña debe tener al menos 8 caracteres, incluyendo letras y números.">
+            
+            <button type="submit" class="submit-btn">Registrar</button>
+        </form>
+        <!-- Contenedor para mensajes de error -->
+        <p id="error-message" class="error-message" style="color: red; display: none;"></p>
+        <p>¿Ya tienes una cuenta? <a href="iniciosesion.html">Inicia sesión aquí</a>.</p>
+    </div>
+
+    <!-- Firebase Integration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+    
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtKJx7VUbUpH5_CMvxkB20B-A3eEfCHA",
+            authDomain: "petconnect-992db.firebaseapp.com",
+            projectId: "petconnect-992db",
+            storageBucket: "petconnect-992db.appspot.com",
+            messagingSenderId: "175930672807",
+            appId: "1:175930672807:web:49bffbae4f0e878b1fd82",
+            measurementId: "G-E09LD3T7QC"
+        };
+    
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+    
+        // Escuchar el formulario de registro
+        document.getElementById("register-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+    
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+    
+            try {
+                // Ocultar mensajes de error previos
+                errorMessage.style.display = "none";
+                errorMessage.textContent = "";
+    
+                // Crear usuario con Firebase Authentication
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+    
+                // Actualizar el perfil del usuario
+                await updateProfile(user, { displayName: username });
+    
+                // Guardar datos adicionales en Firestore
+                await addDoc(collection(db, "users"), {
+                    uid: user.uid,
+                    username: username,
+                    email: email
+                });
+    
+                // Mensaje de éxito
+                alert("Registro exitoso. ¡Bienvenido, " + username + "!");
+                document.getElementById("register-form").reset();
+            } catch (error) {
+                // Mostrar mensaje de error en la página
+                if (error.code === "auth/email-already-in-use") {
+                    errorMessage.textContent = "El correo ingresado ya está en uso. Por favor, usa otro correo o inicia sesión.";
+                    errorMessage.style.display = "block";
+                } else if (error.code === "auth/invalid-email") {
+                    errorMessage.textContent = "Por favor, ingresa un correo electrónico válido.";
+                    errorMessage.style.display = "block";
+                } else if (error.code === "auth/weak-password") {
+                    errorMessage.textContent = "La contraseña es demasiado débil. Debe tener al menos 8 caracteres alfanuméricos.";
+                    errorMessage.style.display = "block";
+                } else {
+                    errorMessage.textContent = "Ocurrió un error. Por favor, intenta de nuevo.";
+                    errorMessage.style.display = "block";
+                }
+                console.error("Error: ", error);
+            }
+        });
+    </script>
+</body>
+</html>

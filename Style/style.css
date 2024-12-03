@@ -1,0 +1,201 @@
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Edu AU VIC WA NT Pre', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0fff0; /* Fondo verde suave */
+}
+
+/* Ejemplo de uso específico */
+h1, h2 {
+    font-family: 'Caveat', cursive;
+}
+
+p, label, input, button {
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado */
+.main-header {
+    background-color: #006400; /* Verde oscuro */
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #adff2f; /* Verde lima */
+}
+
+.login-btn {
+    background-color: #32cd32; /* Verde lima */
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #7cfc00; /* Verde claro */
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: #32cd32; /* Verde lima */
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #006400; /* Verde oscuro */
+}
+
+/* Info Sections */
+.info-section {
+    padding: 40px 20px;
+    background-color: #f5fff5; /* Verde pálido */
+    border-top: 3px solid #32cd32; /* Verde lima */
+}
+
+.info-section:nth-child(even) {
+    background-color: #e0ffe0; /* Verde más intenso */
+}
+
+.info-section h2 {
+    margin-bottom: 15px;
+    color: #006400; /* Verde oscuro */
+}
+
+.info-section p {
+    color: #333;
+    font-size: 1.1em;
+}
+
+/* Footer */
+.main-footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #006400; /* Verde oscuro */
+    color: #fff;
+}
+
+/* Contenedor centrado */
+.register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f0fff0; /* Fondo verde suave */
+    border: 2px solid #32cd32; /* Borde verde lima */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.register-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #006400; /* Verde oscuro */
+}
+
+.register-container label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.register-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #32cd32; /* Verde lima */
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.register-container input:focus {
+    border-color: #006400; /* Verde oscuro */
+    outline: none;
+    box-shadow: 0 0 5px #32cd32;
+}
+
+.submit-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    background-color: #32cd32; /* Verde lima */
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #006400; /* Verde oscuro */
+}
+
+.register-container p {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.register-container a {
+    color: #32cd32; /* Verde lima */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}

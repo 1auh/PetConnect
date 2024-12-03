@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - PetConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Style/style.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Iniciar Sesión en PetConnect</h2>
+        <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+            
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+            
+            <button type="submit" class="submit-btn">Iniciar Sesión</button>
+        </form>
+        <!-- Contenedor para mensajes de error -->
+        <p id="error-message" class="error-message" style="color: red; display: none;"></p>
+        <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a>.</p>
+    </div>
+
+    <!-- Firebase Authentication Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtKJx7VUbUpH5_CMvxkB20B-A3eEfCHA",
+            authDomain: "petconnect-992db.firebaseapp.com",
+            projectId: "petconnect-992db",
+            storageBucket: "petconnect-992db.appspot.com",
+            messagingSenderId: "175930672807",
+            appId: "1:175930672807:web:49bffbae4f0e878b1fd82",
+            measurementId: "G-E09LD3T7QC"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Escuchar el formulario de inicio de sesión
+        document.getElementById("login-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            try {
+                // Ocultar mensajes de error previos
+                errorMessage.style.display = "none";
+                errorMessage.textContent = "";
+
+                // Iniciar sesión con Firebase Authentication
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                // Redirigir al usuario después del inicio de sesión exitoso
+                alert("Inicio de sesión exitoso. ¡Bienvenido de nuevo, " + user.email + "!");
+                window.location.href = "adopcion.html"; // Cambiado de dashboard.html a adopcion.html
+            } catch (error) {
+                // Manejar errores de inicio de sesión
+                if (error.code === "auth/user-not-found") {
+                    errorMessage.textContent = "No se encontró una cuenta con este correo. Verifica tus datos o regístrate.";
+                } else if (error.code === "auth/wrong-password") {
+                    errorMessage.textContent = "La contraseña ingresada es incorrecta. Intenta de nuevo.";
+                } else if (error.code === "auth/invalid-email") {
+                    errorMessage.textContent = "Por favor, ingresa un correo electrónico válido.";
+                } else {
+                    errorMessage.textContent = "Ocurrió un error. Por favor, intenta de nuevo.";
+                }
+                errorMessage.style.display = "block";
+                console.error("Error al iniciar sesión: ", error);
+            }
+        });
+    </script>
+</body>
+</html>
