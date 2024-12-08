@@ -39,7 +39,7 @@
     
         // Configuración de Firebase
         const firebaseConfig = {
-            apiKey: "AIzaSyDtKJx7VUbUpH5_CMvxkB20B-A3eEfCHA",
+            apiKey: "AIzaSyDIk3Jx7VUbUpH5_CMvxKb2OB-A3eEfCHA",
             authDomain: "petconnect-992db.firebaseapp.com",
             projectId: "petconnect-992db",
             storageBucket: "petconnect-992db.appspot.com",
@@ -83,6 +83,7 @@
     
                 // Mensaje de éxito
                 alert("Registro exitoso. ¡Bienvenido, " + username + "!");
+                window.location.href = "adopcion.html"; // Cambiado de dashboard.html a adopcion.html
                 document.getElementById("register-form").reset();
             } catch (error) {
                 // Mostrar mensaje de error en la página

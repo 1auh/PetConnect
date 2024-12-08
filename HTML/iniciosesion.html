@@ -26,13 +26,15 @@
         <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a>.</p>
     </div>
 
-    <!-- Firebase Authentication Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
-    <script>
+    <!-- Firebase Scripts Importados como Módulos -->
+    <script type="module">
+        // Importar Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
         // Configuración de Firebase
         const firebaseConfig = {
-            apiKey: "AIzaSyDtKJx7VUbUpH5_CMvxkB20B-A3eEfCHA",
+            apiKey: "AIzaSyDIk3Jx7VUbUpH5_CMvxKb2OB-A3eEfCHA",
             authDomain: "petconnect-992db.firebaseapp.com",
             projectId: "petconnect-992db",
             storageBucket: "petconnect-992db.appspot.com",
@@ -42,11 +44,12 @@
         };
 
         // Inicializar Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
-        // Escuchar el formulario de inicio de sesión
-        document.getElementById("login-form").addEventListener("submit", async function (e) {
+        // Manejo del formulario de inicio de sesión
+        const loginForm = document.getElementById("login-form");
+        loginForm.addEventListener("submit", async function (e) {
             e.preventDefault();
 
             const email = document.getElementById("email").value;
@@ -58,15 +61,15 @@
                 errorMessage.style.display = "none";
                 errorMessage.textContent = "";
 
-                // Iniciar sesión con Firebase Authentication
-                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                // Intentar iniciar sesión
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
                 // Redirigir al usuario después del inicio de sesión exitoso
                 alert("Inicio de sesión exitoso. ¡Bienvenido de nuevo, " + user.email + "!");
-                window.location.href = "adopcion.html"; // Cambiado de dashboard.html a adopcion.html
+                window.location.href = "adopcion.html"; // Redirigir al dashboard o página de adopción
             } catch (error) {
-                // Manejar errores de inicio de sesión
+                // Mostrar mensajes de error basados en el código de error
                 if (error.code === "auth/user-not-found") {
                     errorMessage.textContent = "No se encontró una cuenta con este correo. Verifica tus datos o regístrate.";
                 } else if (error.code === "auth/wrong-password") {
